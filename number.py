@@ -1,10 +1,12 @@
 import pygame
 import display
-import ui
+import buton
+import counter
 
 display = display.display
 screen = display.screen
-ui = ui.ui
+Buton = buton.buton
+Counter = counter.counter
 
 pygame.init()
 pygame.mixer.init()  ## For sound
@@ -17,23 +19,23 @@ def quit():
             return False
     return True
 
+Buton.makeButon(display.WIDTH-60,display.HEIGHT/2,"Increce number")
 
 
 while quit():
-
-    
-    display.clock.tick()
+  
+    display.tick()
 
     all_sprites.update()
 
     screen.fill((255,255,255))
 
-    ui.makeButon(display.WIDTH/2,display.HEIGHT/2,"""Exemple Text (this is an example text)""")
+    Buton.updateButons()
+
+    Counter.DisplayCounter()
 
     all_sprites.draw(display)
 
     pygame.display.flip()     
-
-    
 
 pygame.quit()
